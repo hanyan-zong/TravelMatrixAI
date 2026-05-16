@@ -1,0 +1,10 @@
+mvp/api/.venv/
+mvp/api/__pycache__/
+mvp/api/app/__pycache__/
+mvp/api/data/state.json
+mvp/web/node_modules/
+mvp/web/dist/
+mvp/chrome-profile*/
+mvp/*.png
+*.log
+.env
