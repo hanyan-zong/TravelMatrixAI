@@ -1,3 +1,6 @@
+# 本项目有远程协作，CLAUDE.md 需要同步（覆盖全局 gitignore 的排除规则）
+!CLAUDE.md
+
 # Python
 __pycache__/
 *.pyc
