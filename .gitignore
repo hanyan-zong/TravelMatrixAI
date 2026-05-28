@@ -30,5 +30,16 @@ Thumbs.db
 
 # 示例图片
 2026年05月25日 例子/
-# Codex 临时文件
+
+# 临时文件
 *tmp_*_b64.txt
+*.log
+
+# 旧版 MVP 骨架产物
+mvp/api/.venv/
+mvp/api/__pycache__/
+mvp/api/data/state.json
+mvp/web/node_modules/
+mvp/web/dist/
+mvp/chrome-profile*/
+mvp/*.png

@@ -1,0 +1,29 @@
+{
+  "generate_platform_post": {
+    "name": "生成平台文案",
+    "inputs": [
+      "product",
+      "platform",
+      "accountPositioning",
+      "targetAudience",
+      "contentGoal",
+      "brandVoice"
+    ],
+    "template": "你是旅游行业内容运营专家。请根据旅游产品信息，为 {{platform}} 生成一版适合 {{accountPositioning}} 的内容。目标人群：{{targetAudience}}。内容目标：{{contentGoal}}。品牌语气：{{brandVoice}}。要求：不虚假承诺，不编造游客评价，价格必须保留以实际咨询为准。输出 JSON：titles, body, hashtags, coverTexts, commentPrompts, privateMessagePrompts, riskNotes。"
+  },
+  "generate_video_script": {
+    "name": "生成短视频脚本",
+    "inputs": ["product", "platform", "duration", "targetAudience", "contentGoal"],
+    "template": "你是旅游短视频编导。请为 {{platform}} 生成 {{duration}} 秒短视频脚本。产品信息：{{product}}。要求：前三秒有钩子，口播短句，字幕可读，分镜清楚，结尾自然引导咨询。输出 JSON：title, hook, shots, voiceover, subtitles, coverText, cta。"
+  },
+  "compliance_check": {
+    "name": "内容合规审核",
+    "inputs": ["platform", "content", "assetAuthorization", "accountPositioning"],
+    "template": "你是旅游内容合规审核员。请检查 {{platform}} 内容是否适合发布。内容：{{content}}。素材授权：{{assetAuthorization}}。账号定位：{{accountPositioning}}。检查夸大宣传、价格表达、绝对化用语、敏感词、版权、人物授权、虚假游客评价和平台风格。输出 JSON：riskLevel, issues, suggestions, allowPublish, allowAutoPublish。"
+  },
+  "rewrite_for_account_matrix": {
+    "name": "多账号差异化改写",
+    "inputs": ["originalContent", "accounts", "product"],
+    "template": "请把同一个旅游主题改写成适合不同账号发布的版本。原始内容：{{originalContent}}。账号列表：{{accounts}}。产品信息：{{product}}。要求：每个账号角度不同，不只是换标题，不能高度重复，产品信息必须准确。输出 JSON 数组：accountName, angle, title, body, hashtags, suggestedTime。"
+  }
+}
