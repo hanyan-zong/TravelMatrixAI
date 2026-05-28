@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react'
 import type { ScheduleEntry, ContentData } from '../types'
-import GeneratePanel from './GeneratePanel'
+import GeneratePanel, { MODE_OPTS } from './GeneratePanel'
 import PostPreview from './PostPreview'
 import ResourceCard from './ResourceCard'
 import ImagePromptsPanel from './ImagePromptsPanel'
@@ -33,17 +34,11 @@ export default function ContentView({ entry, content, loading, generating, onGen
   }
 
   if (!content && !generating) {
-    return <GeneratePanel entry={entry} generating={false} onGenerate={onGenerate} />
+    return <GeneratePanel entry={entry} onGenerate={onGenerate} />
   }
 
   if (generating) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full gap-4">
-        <div className="animate-spin w-12 h-12 border-4 border-cyan-200 border-t-cyan-600 rounded-full" />
-        <p className="text-gray-600 font-medium">正在生成内容，请稍候...</p>
-        <p className="text-sm text-gray-400">内容生成可能需要 5-30 秒</p>
-      </div>
-    )
+    return <GeneratingIndicator />
   }
 
   if (!content) return null
@@ -71,8 +66,11 @@ export default function ContentView({ entry, content, loading, generating, onGen
             下载海报
           </button>
         )}
-        <button onClick={() => onGenerate({ use_ai_plan: false, generate_images: false, generate_poster: true })} className="px-4 py-2 text-sm bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
-          重新生成
+        <button onClick={() => onGenerate(MODE_OPTS.ai)} className="px-4 py-2 text-sm bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+          AI 重新生成
+        </button>
+        <button onClick={() => onGenerate(MODE_OPTS.rules)} className="px-4 py-2 text-sm bg-white border border-gray-200 text-gray-400 rounded-lg hover:bg-gray-50 transition-colors">
+          规则模式
         </button>
       </div>
 
@@ -95,6 +93,30 @@ export default function ContentView({ entry, content, loading, generating, onGen
       <div className="mt-6">
         <ImagePromptsPanel prompts={content.image_prompts} imagesBase64={content.images_base64} />
       </div>
+    </div>
+  )
+}
+
+
+function GeneratingIndicator() {
+  const [elapsed, setElapsed] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setElapsed(s => s + 1), 1000)
+    return () => clearInterval(t)
+  }, [])
+
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-4">
+      <div className="animate-spin w-12 h-12 border-4 border-cyan-200 border-t-cyan-600 rounded-full" />
+      <p className="text-gray-600 font-medium">正在生成内容，请稍候...</p>
+      <p className="text-sm text-gray-400">
+        已等待 {elapsed} 秒
+        {elapsed < 10 && '，AI 生成通常需要 20-40 秒'}
+        {elapsed >= 10 && elapsed < 30 && '，AI 正在策划选品...'}
+        {elapsed >= 30 && elapsed < 60 && '，AI 正在生成图片...'}
+        {elapsed >= 60 && '，仍在处理中，请耐心等待'}
+      </p>
     </div>
   )
 }

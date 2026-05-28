@@ -1,0 +1,4 @@
+/docs https://bws-social-content.fly.dev/docs 200
+/docs/* https://bws-social-content.fly.dev/docs/:splat 200
+/openapi.json https://bws-social-content.fly.dev/openapi.json 200
+/redoc https://bws-social-content.fly.dev/redoc 200

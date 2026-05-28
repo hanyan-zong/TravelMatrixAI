@@ -4,8 +4,8 @@
 
 ## 快速体验
 
-- **在线工作台**：https://bws-content-web.pages.dev
-- **API 文档**：https://bws-social-content.fly.dev/docs
+- **在线工作台**：https://bws-social-content.pages.dev
+- **API 文档**：https://bws-social-content.pages.dev/docs
 
 打开工作台 → 选一个日期 → 点"生成内容" → 得到文案 + 海报 → 复制/下载 → 发小红书。
 
