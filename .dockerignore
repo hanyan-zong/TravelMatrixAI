@@ -1,0 +1,19 @@
+.env
+.git
+.gitignore
+.obsidian/
+.codex_deps/
+__pycache__/
+output/
+data/
+parsers/
+models.py
+parse_excel.py
+daily_post_generator.py
+*.pyc
+2026年05月25日 例子/
+BWS碎片化整理 - 适配AI模板.xlsx
+BWS碎片化整理 - 2026年05月25日 增加排期数据.xlsx
+PROJECT_CONTEXT.md
+AGENTS.md
+CLAUDE.md
